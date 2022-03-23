@@ -20,8 +20,12 @@
 
 # with open(file_to_load) as election_results:
 #     print(election_results)
-
+import csv
 import os
+
+file_to_load = os.path.join("Resources", "election_results.csv")
+
 file_to_save = os.path.join("Analysis", "election_analysis.txt")
 
-open(file_to_save, "w")
+#Use open statement to write data to text file
+with open(file_to_load) as election_data:
