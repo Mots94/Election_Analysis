@@ -25,6 +25,7 @@ county_votes = {}
 winning_candidate = ""
 winning_count = 0
 winning_percentage = 0
+highest_county = 0
 
 
 # Open election_results.csv and read file
@@ -70,52 +71,60 @@ with open(file_to_load) as election_data:
 
         county_votes[counties] += 1
 
-    print(county_votes)
+    
 
 
   
-# with open(file_to_save, "w") as txt_file:
+with open(file_to_save, "w") as txt_file:
 
-#     election_results = (
-#         f"\nElection Results\n"
-#         f"-------------------------\n"
-#         f"Total Votes: {total_votes:,}\n"
-#         f"-------------------------\n")
-#     print(election_results, end="")
+    election_results = (
+        f"\nElection Results\n"
+        f"-------------------------\n"
+        f"Total Votes: {total_votes:,}\n"
+        f"-------------------------\n")
+    print(election_results, end="")
 
-#     txt_file.write(election_results)
+    txt_file.write(election_results)
 
-#     for candidate_name in candidate_votes:
+    for candidate_name in candidate_votes:
 
-#         votes = candidate_votes[candidate_name]
+        votes = candidate_votes[candidate_name]
 
-#         vote_percentage = (float(votes)/float(total_votes)) * 100
+        vote_percentage = (float(votes)/float(total_votes)) * 100
 
-#         # Print out each candidate's name, vote count, and percentage of votes
-#         candidate_results = (f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+        # Print out each candidate's name, vote count, and percentage of votes
+        candidate_results = (f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
 
-#         print(candidate_results)
+        print(candidate_results)
 
-#         txt_file.write(candidate_results)
+        txt_file.write(candidate_results)
 
-#         if (votes > winning_count) and (vote_percentage > winning_percentage):
+        if (votes > winning_count) and (vote_percentage > winning_percentage):
 
-#             winning_count = votes
+            winning_count = votes
 
-#             winning_percentage = vote_percentage
+            winning_percentage = vote_percentage
 
-#             winning_candidate = candidate_name
+            winning_candidate = candidate_name
 
-#         winning_candidate_summary = (
-#             f"------------------------\n"
-#             f"Winner: {winning_candidate}\n"
-#             f"Winning Vote Count: {winning_count:,}\n"
-#             f"Winning Percentage: {winning_percentage:.1f}%\n"
-#             f"------------------------\n")
+        winning_candidate_summary = (
+            f"------------------------\n"
+            f"Winner: {winning_candidate}\n"
+            f"Winning Vote Count: {winning_count:,}\n"
+            f"Winning Percentage: {winning_percentage:.1f}%\n"
+            f"------------------------\n")
 
-#     print(winning_candidate_summary)
+    print(winning_candidate_summary)
 
-#     txt_file.write(winning_candidate_summary)
+    txt_file.write(winning_candidate_summary)
+
+    # Create header for county results
+
+    county_header = (
+        f"County Results\n"
+        f"------------------------\n")
+
+    print(county_header)
 
     for counties in county_votes:
 
@@ -123,7 +132,16 @@ with open(file_to_load) as election_data:
 
         county_perc_vote = (float(var_county_votes)/float(total_votes)) * 100
 
-        print(county_perc_vote)
+        county_results = (f"{counties} county had a total of {var_county_votes:,} ({county_perc_vote:.2f}%) voters in this election.\n")
+
+        print(county_results)
+
+        if var_county_votes > highest_county:
+
+            turnout = (f"{counties} county had the highest turnout with {var_county_votes:,} of the total vote.")
+
+    print(turnout)
+        
 
 
     ##1. Voter turnout for each county
