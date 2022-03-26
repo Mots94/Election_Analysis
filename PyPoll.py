@@ -15,13 +15,16 @@ total_votes = 0
 # Create list of candidates/list of counties
 candidate_options = []
 
+# Create county list
 all_counties = []
 
-# Creat dictionary for candidate names and # of votes/number of county votes
+# Create dictionary for candidate names and # of votes/number of county votes
 candidate_votes = {}
 
+# Create dictionary for counties and number of votes per county
 county_votes = {}
 
+# Variables created for f-string output
 winning_candidate = ""
 winning_count = 0
 winning_percentage = 0
@@ -46,7 +49,7 @@ with open(file_to_load) as election_data:
         #Create candidate name variable to add to candidate_options list
         candidate_name = row[2]
 
-        #1a. Create list and loop through data to add counties
+        # Counties variable with second column index
         counties = row[1]
         
         # Add candidate_name data to canidate_options list, use if statment 

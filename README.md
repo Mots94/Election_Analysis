@@ -11,5 +11,10 @@ After any election, a large amount of data has been collected that will ultimate
 
 ## Audit Results
 
-    * There were 369,711 votes cast in this election.  In order to get this number, a total votes variable was initialized at zero using `total_votes = 0`  
+* There were 369,711 votes cast in this election.  
+In order to get this number, a total votes variable was initialized at zero using `total_votes = 0`.  Since each row represents a single vote, we could simply loop through all rows and add one vote to `total_votes` for each row.  However, this data file included headers, so to get an accurate count of votes the code `headers = next()` was used to skip the first row of header information.  Looping through all rows with a for loop, the code `total_votes += 1` was used to add 1 for each row in our data file.  This `total_votes` variable was used later on to display the number of total votes in a print() statement. 
+
+* Jefferson county had 38,855 (10.51%) votes, Denver county had 306,055 (82.78%) votes, and Arapahoe county had 24,801 (6.71%) votes in this election.
+This data was also gathered utilizing a for loop.  A county votes dictionary was created to associate each county with its voter turnout.  This was done using the code `county_votes = {}`
+
 
