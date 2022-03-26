@@ -26,5 +26,36 @@ for row in file_reader:
 
     county_votes[counties] += 1
 ```
+The percentages of county votes out of total vote were retrieved using the follow code:
+```
+ for counties in county_votes:
 
+    var_county_votes = county_votes[counties]
 
+    county_perc_vote = (float(var_county_votes)/float(total_votes)) * 100
+
+    county_results = (f"{counties} county had a total of {var_county_votes:,} ({county_perc_vote:.2f}%) voters in this election.\n")
+
+    print(county_results)
+
+    txt_file.write(county_results)
+```
+
+* Denver county had the highest number of votes in this election at 306,055.  
+Although this could clearly be seen from the output of the `county_votes` list, code was written to retrieve the county with the highest vote count and print out that county name.  This was done using the follow code:
+```
+    if var_county_votes > highest_county:
+
+        highest_county = var_county_votes
+
+        turnout = (f"{counties} county had the highest turnout with {highest_county:,} votes of the total vote.\n")
+
+    final_result = (
+        f"------------------------\n"
+        f"{turnout}") 
+
+    print(final_result)
+
+    txt_file.write(final_result)
+```
+This code was included in the for loop referenced in the previous bullet point.  The variable `highest_count` was initialized at zero, and the county with a number of votes greater than `highest_county` was assigned to the variable `highest_county`.  A variable named turnout was used to create an f-string statement with the name of the county that had the highest turnout, as well as their voting turnout number in the election.  This turnout variable was nested inside of another variable called `final_result`, which was used to correctly format the output of data in the .txt file.
