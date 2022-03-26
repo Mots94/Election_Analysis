@@ -3,7 +3,6 @@
 ![Podium](https://github.com/Mots94/Election_Analysis/blob/main/Resources/podiums.png)
 
 ## Using Python to analyze election results
----
 
 ## Introduction
 
@@ -15,6 +14,17 @@ After any election, a large amount of data has been collected that will ultimate
 In order to get this number, a total votes variable was initialized at zero using `total_votes = 0`.  Since each row represents a single vote, we could simply loop through all rows and add one vote to `total_votes` for each row.  However, this data file included headers, so to get an accurate count of votes the code `headers = next()` was used to skip the first row of header information.  Looping through all rows with a for loop, the code `total_votes += 1` was used to add 1 for each row in our data file.  This `total_votes` variable was used later on to display the number of total votes in a print() statement. 
 
 * Jefferson county had 38,855 (10.51%) votes, Denver county had 306,055 (82.78%) votes, and Arapahoe county had 24,801 (6.71%) votes in this election.
-This data was also gathered utilizing a for loop.  A county votes dictionary was created to associate each county with its voter turnout.  This was done using the code `county_votes = {}`
+This data was also gathered utilizing a for loop.  A county names list and county votes dictionary was created to associate each county with its voter turnout.  The list created to hold each county name was created using `all_counties = []`.  The dictionary was created using the code `county_votes = {}`.  The variable, `counties = row[1]`, was also created to refence the column where our county names were located.  Finally, a for loop and conditional statement were used to add data to the `all_counties` list, and associate that list with the `county_votes` dictionary to get the total number of votes for each county.
+```
+for row in file_reader:
+    
+    if counties not in all_counties:
+
+        all_counties.append(counties)
+
+        county_votes[counties] = 0
+
+    county_votes[counties] += 1
+```
 
 
