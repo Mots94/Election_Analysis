@@ -11,3 +11,10 @@ Winner: Diana DeGette
 Winning Vote Count: 272,892
 Winning Percentage: 73.8%
 ------------------------
+County Results
+------------------------
+Jefferson county had a total of 38,855 (10.51%) voters in this election.
+Denver county had a total of 306,055 (82.78%) voters in this election.
+Arapahoe county had a total of 24,801 (6.71%) voters in this election.
+------------------------
+Denver county had the highest turnout with 306,055 votes of the total vote.

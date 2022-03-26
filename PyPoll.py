@@ -126,6 +126,8 @@ with open(file_to_save, "w") as txt_file:
 
     print(county_header)
 
+    txt_file.write(county_header)
+
     for counties in county_votes:
 
         var_county_votes = county_votes[counties]
@@ -136,11 +138,23 @@ with open(file_to_save, "w") as txt_file:
 
         print(county_results)
 
+        txt_file.write(county_results)
+
         if var_county_votes > highest_county:
 
-            turnout = (f"{counties} county had the highest turnout with {var_county_votes:,} of the total vote.")
+            highest_county = var_county_votes
 
-    print(turnout)
+            turnout = (f"{counties} county had the highest turnout with {highest_county:,} votes of the total vote.\n")
+
+    final_result = (
+        f"------------------------\n"
+        f"{turnout}")
+    
+    print(final_result)
+
+    txt_file.write(final_result)
+
+    
         
 
 
