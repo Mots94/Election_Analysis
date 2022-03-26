@@ -84,3 +84,6 @@ This code was included in the for loop referenced in the previous bullet point. 
     txt_file.write(winning_candidate_summary)
 ```
 This code utilized a greater than conditional to assign the candidate with the highest number of votes and highest vote percentage to the variables `winning_count`, `winning_percentage`, and `winning_candidate`.  These variables were used in the `winning_candidate_summary` variable, which was subsequently printed out and written to the results .txt file.
+
+## Audit Summary
+In its current state, this script could be used for any election data, even if there were other candidates or counties include in the data set.  However, if the data set had candidate names and county names in different columns this script would need slight modifications to work.  The only modiciation that would need to be made would be to the variables `candidate_name = row[]` and `counties = row[]`.  Placing the correct index inside these variable will allow the script to access data that accurately represents what it is supposed to represent.
