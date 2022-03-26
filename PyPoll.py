@@ -13,7 +13,7 @@ file_to_save = os.path.join("Analysis", "election_analysis.txt")
 total_votes = 0
 
 # Create list of candidates/list of counties
-candidate_options1 = []
+candidate_options = []
 
 all_counties = []
 
@@ -51,10 +51,10 @@ with open(file_to_load) as election_data:
         
         # Add candidate_name data to canidate_options list, use if statment 
         # so the name of each candidate appears only once in candidate_options list
-        if candidate_name not in candidate_options1: 
+        if candidate_name not in candidate_options: 
             
             # Add candidate name to candidate options list
-            candidate_options1.append(candidate_name)
+            candidate_options.append(candidate_name)
         
     
            #Tracking candidate vote count
@@ -71,10 +71,7 @@ with open(file_to_load) as election_data:
 
         county_votes[counties] += 1
 
-    
-
-
-  
+      
 with open(file_to_save, "w") as txt_file:
 
     election_results = (
@@ -155,9 +152,6 @@ with open(file_to_save, "w") as txt_file:
     txt_file.write(final_result)
 
     
-        
-
-
     ##1. Voter turnout for each county
 
         #1a. Create list and loop through data to add counties
@@ -170,4 +164,4 @@ with open(file_to_save, "w") as txt_file:
 
     ##3. County with the highest turnout
 
-        #3a. Base this on number of county votes
+        #3a. Base this on number of county_votes
