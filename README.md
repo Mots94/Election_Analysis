@@ -14,7 +14,7 @@ After any election, a large amount of data has been collected that will ultimate
 In order to get this number, a total votes variable was initialized at zero using `total_votes = 0`.  Since each row represents a single vote, we could simply loop through all rows and add one vote to `total_votes` for each row.  However, this data file included headers, so to get an accurate count of votes the code `headers = next()` was used to skip the first row of header information.  Looping through all rows with a for loop, the code `total_votes += 1` was used to add 1 for each row in our data file.  This `total_votes` variable was used later on to display the number of total votes in a print() statement. 
 
 * Jefferson county had 38,855 (10.51%) votes, Denver county had 306,055 (82.78%) votes, and Arapahoe county had 24,801 (6.71%) votes in this election.
-This data was also gathered utilizing a for loop.  A county names list and county votes dictionary was created to associate each county with its voter turnout.  The list created to hold each county name was created using `all_counties = []`.  The dictionary was created using the code `county_votes = {}`.  The variable, `counties = row[1]`, was also created to refence the column where our county names were located.  Finally, a for loop and conditional statement were used to add data to the `all_counties` list, and associate that list with the `county_votes` dictionary to get the total number of votes for each county.
+This data was also gathered utilizing a for loop.  A county names list and county votes dictionary was created to associate each county with its voter turnout.  The list created to hold each county name was initialized using `all_counties = []`.  The dictionary was initialized using the code `county_votes = {}`.  The variable, `counties = row[1]`, was also created to refence the column where our county names were located.  Finally, a for loop and conditional statement were used to add data to the `all_counties` list, and associate that list with the `county_votes` dictionary to get the total number of votes for each county.
 ```
 for row in file_reader:
     
@@ -42,7 +42,7 @@ The percentages of county votes out of total vote were retrieved using the follo
 ```
 
 * Denver county had the highest number of votes in this election at 306,055.  
-Although this could clearly be seen from the output of the `county_votes` list, code was written to retrieve the county with the highest vote count and print out that county name.  This was done using the follow code:
+Although this could clearly be seen from the output of the `county_votes` dictionary, code was written to retrieve the county with the highest vote count and print out that county name.  This was done using the follow code:
 ```
     if var_county_votes > highest_county:
 
@@ -59,3 +59,28 @@ Although this could clearly be seen from the output of the `county_votes` list, 
     txt_file.write(final_result)
 ```
 This code was included in the for loop referenced in the previous bullet point.  The variable `highest_count` was initialized at zero, and the county with a number of votes greater than `highest_county` was assigned to the variable `highest_county`.  A variable named turnout was used to create an f-string statement with the name of the county that had the highest turnout, as well as their voting turnout number in the election.  This turnout variable was nested inside of another variable called `final_result`, which was used to correctly format the output of data in the .txt file.
+
+* In this election, Charles Casper Stockham received 85,213 votes (23.0%), Diana DeGette received 272,892 votes (73.8%), and Raymon Anthony Doane received 11,606 votes (3.1%).  This information was gathered using code very similar to the county vote totals and percentages.  The only real difference for this data was using the variable `candidate_name = row[2]` to reference where the candidate names were at.  
+
+* Finally, the winner of this election was Diana Degette with 272,892 votes, comprising 73.8% of the total vote.  A conditional statement was used inside of the `candidate_votes` for loop that looks like the following:
+```
+        if (votes > winning_count) and (vote_percentage > winning_percentage):
+
+            winning_count = votes
+
+            winning_percentage = vote_percentage
+
+            winning_candidate = candidate_name
+
+        winning_candidate_summary = (
+            f"------------------------\n"
+            f"Winner: {winning_candidate}\n"
+            f"Winning Vote Count: {winning_count:,}\n"
+            f"Winning Percentage: {winning_percentage:.1f}%\n"
+            f"------------------------\n")
+
+    print(winning_candidate_summary)
+
+    txt_file.write(winning_candidate_summary)
+```
+This code utilized a greater than conditional to assign the candidate with the highest number of votes and highest vote percentage to the variables `winning_count`, `winning_percentage`, and `winning_candidate`.  These variables were used in the `winning_candidate_summary` variable, which was subsequently printed out and written to the results .txt file.
