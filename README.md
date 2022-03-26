@@ -10,6 +10,8 @@ After any election, a large amount of data has been collected that will ultimate
 
 ## Audit Results
 
+![TO](https://github.com/Mots94/Election_Analysis/blob/main/Resources/terminal_output.PNG)
+
 * There were 369,711 votes cast in this election.  
 In order to get this number, a total votes variable was initialized at zero using `total_votes = 0`.  Since each row represents a single vote, we could simply loop through all rows and add one vote to `total_votes` for each row.  However, this data file included headers, so to get an accurate count of votes the code `headers = next()` was used to skip the first row of header information.  Looping through all rows with a for loop, the code `total_votes += 1` was used to add 1 for each row in our data file.  This `total_votes` variable was used later on to display the number of total votes in a print() statement. 
 
@@ -86,4 +88,8 @@ This code was included in the for loop referenced in the previous bullet point. 
 This code utilized a greater than conditional to assign the candidate with the highest number of votes and highest vote percentage to the variables `winning_count`, `winning_percentage`, and `winning_candidate`.  These variables were used in the `winning_candidate_summary` variable, which was subsequently printed out and written to the results .txt file.
 
 ## Audit Summary
-In its current state, this script could be used for any election data, even if there were other candidates or counties include in the data set.  However, if the data set had candidate names and county names in different columns this script would need slight modifications to work.  The only modiciation that would need to be made would be to the variables `candidate_name = row[]` and `counties = row[]`.  Placing the correct index inside these variable will allow the script to access data that accurately represents what it is supposed to represent.
+In its current state, this script could be used for any election data, even if there were other candidates or counties include in the data set.  However, if the data set had candidate names and county names in different columns this script would need slight modifications to work.  The only modiciation that would need to be made would be to the variables `candidate_name = row[]` and `counties = row[]`.  Placing the correct index inside these variable will allow the script to access data that accurately represents what it is supposed to represent.  
+
+---
+
+Additionally, if our data set included data from cities within each county, the `all_counties` list could be modified to contain a list of cities in the counties.  This would likely require a nested if conditional be created inside of a for loop where two variables are used to reference the county data and city data (i.e. `counties = row[3]` and `cities = row[4]`).  As a result, a dictionary of dictionaries could be created that breaks down the city voting data in order to gain more insight into smaller community voting patterns.     
